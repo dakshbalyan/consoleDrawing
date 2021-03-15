@@ -4,7 +4,14 @@ import java.util.Scanner;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+// The main application where all the other functionalities are called from.
+
 public class MainApplication {
+    // This regular expression validates if the given command is in line with the
+    // command description in printHelp section
+    // The regular expression --> The [a-zA-Z]{1} part makes sure the first character is an alphabet
+    //                            The (\s\d+)* part makes sure the parameters are digits only
+    //                            This (\s[a-zA-z]{1})? part is for the Fill function draw character.
     private final Pattern pattern = Pattern
             .compile("[a-zA-Z]{1}(\\s\\d+)*(\\s[a-zA-z]{1})?+");
 
@@ -15,6 +22,7 @@ public class MainApplication {
         app.inputCommand();
     }
 
+    //This method takes in the input in an infinite loop until the Q command to exit the program is input
     protected void inputCommand(){
         Scanner scanner = new Scanner(System.in);
         try{
@@ -27,6 +35,7 @@ public class MainApplication {
         }
     }
 
+    // This method executes the functionalities using switch cases and then calling the corresponding classes' object
     private void executeCommand(final String input) throws Exception {
         validateCommand(input);
         switch (input.charAt(0)) {
@@ -53,7 +62,8 @@ public class MainApplication {
         }
     }
 
-    private void validateCommand(String commandInput){    // ok
+    // validates the input command based on the above regex
+    private void validateCommand(String commandInput){
         Matcher matcher = pattern.matcher(commandInput);
         if (!matcher.matches()) {
             System.out.println("Command string is invalid.");
@@ -61,6 +71,7 @@ public class MainApplication {
         }
     }
 
+    // this method is printed at the start of every program
     private static void printHelp() { // great
         String help = "The work as follows:\n"
                 + "1. Create a new canvas \n"
