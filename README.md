@@ -23,5 +23,6 @@ The basic idea to solve this problem statement was to go for a 2D array with spe
 
 To run this program on the terminal there are 2 methods:
 1. Go into the target directory of the github repository download the consoleDrawingProxor-1.0-SNAPSHOT.jar file and then from the downloaded directory run the following command in the terminal ---> java -jar consoleDrawingProxor-1.0-SNAPSHOT.jar
-2. Alternatively you can choose the build an executable jar, in the project root directory run the following command --> mvn clean package
+2. Alternatively you can choose to build an executable jar file. In the project root directory run the following command --> mvn clean package.
+
 It will create a consoleDrawingProxor-1.0-SNAPSHOT.jar in the /target directory. Then from inside that directory run the command --> java -jar consoleDrawingProxor-1.0-SNAPSHOT.jar 
