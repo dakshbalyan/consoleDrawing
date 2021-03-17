@@ -21,8 +21,6 @@ The basic idea to solve this problem statement was to go for a 2D array with spe
 5. **CreateRectangle.java** - This class takes in the input from the main application class then using the functionalities in the command class creates a rectangle which is within the canvas otherwise just prints the previous canvas.
 6. **FillCanvas.java** - This class with the input parameters fills the area connected to the input parameter with the given character. 
 
-To run this program on the terminal there are 2 methods:
-1. Go into the target directory of the github repository download the consoleDrawingProxor-1.0-SNAPSHOT.jar file and then from the downloaded directory run the following command in the terminal ---> java -jar consoleDrawingProxor-1.0-SNAPSHOT.jar
-2. Alternatively you can choose to build an executable jar file. In the project root directory run the following command --> mvn clean package.
-
-It will create a consoleDrawingProxor-1.0-SNAPSHOT.jar in the /target directory. Then from inside that directory run the command --> java -jar consoleDrawingProxor-1.0-SNAPSHOT.jar 
+To run this program on the terminal there are 2 methods:<br/>
+**Method 1** - Go into the target directory of the github repository download the consoleDrawingProxor-1.0-SNAPSHOT.jar file and then from the downloaded directory run the following command in the terminal ---> java -jar consoleDrawingProxor-1.0-SNAPSHOT.jar
+**Method 2** - Alternatively you can choose to build an executable jar file. In the project root directory run the following command --> mvn clean package<br/>The mvn clean package command will create a consoleDrawingProxor-1.0-SNAPSHOT.jar in the /target directory. Then from inside that directory run the command --> java -jar consoleDrawingProxor-1.0-SNAPSHOT.jar 
