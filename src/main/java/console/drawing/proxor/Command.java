@@ -6,8 +6,8 @@ import java.util.List;
 public class Command {
     // Variables to store the parameters in
     private List<String> params;
-    protected int width;
-    protected int height;
+    protected static int width;
+    protected static int height;
     protected static char[][] shape; // The static variable for the 2D array where the values will be updated
 
     // The following are the basic getters and setters of the above variables
@@ -40,6 +40,7 @@ public class Command {
     }
 
     // Getter and setter methods for the params list variable
+
     public List<String> getParams() {
         return params;
     }
@@ -49,12 +50,7 @@ public class Command {
 
     // This method first validates the input points and then draws a vertical or
     // horizontal line between point x1,y1 and x2,y2
-    public void draw(int x1, int y1, int x2, int y2, char drawChar) {
-        try {
-            validate(x1, y1, x2, y2);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+    protected void draw(int x1, int y1, int x2, int y2, char drawChar) throws Exception {
         if (x1 == x2) {
             // vertical line
             for (int i = y1; i <= y2; i++) {
@@ -68,7 +64,7 @@ public class Command {
         }
     }
 
-    public void display(char[][] shape) {
+    protected void display(char[][] shape) {
         // This is the function that displays the lines, canvas, rectangle and the fill function
         for (int i = 0; i < shape.length; ++i) {
             for (int j = 0; j < shape[i].length; j++) {
@@ -83,17 +79,19 @@ public class Command {
     }
 
     // The validate method for the input params points x1,y1 and x2,y2
-    protected void validate(int x1, int y1, int x2, int y2) throws Exception {
+    protected void validate(int x1, int y1, int x2, int y2) {
         try {
-            if (x1 >= 1 && y1 >= 1 && x2 >= 1 && y2 >= 1 && x1 < width
-                    && y1 < height && x2 < width && y2 < height && x1 <= x2
+            if (x1 >= 1 && y1 >= 1 && x2 >= 1 && y2 >= 1 && x1 <= width
+                    && y1 <= height && x2 <= width && y2 <= height && x1 <= x2
                     && y1 <= y2) {
+                return;
+            }
+            else{
                 throw new Exception();
             }
         }
         catch (Exception e){
             System.out.println("Points entered invalid : going out of scope of canvas !");
-            return;
         }
     }
 }

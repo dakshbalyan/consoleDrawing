@@ -1,0 +1,6 @@
+console/drawing/proxor/FillCanvas.class
+console/drawing/proxor/CreateCanvas.class
+console/drawing/proxor/CreateLine.class
+console/drawing/proxor/CreateRectangle.class
+console/drawing/proxor/MainApplication.class
+console/drawing/proxor/Command.class

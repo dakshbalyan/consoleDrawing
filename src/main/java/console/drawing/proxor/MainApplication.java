@@ -13,19 +13,19 @@ public class MainApplication {
     //                            The (\s\d+)* part makes sure the parameters are digits only
     //                            This (\s[a-zA-z]{1})? part is for the Fill function draw character.
     private final Pattern pattern = Pattern
-            .compile("[a-zA-Z]{1}(\\s\\d+)*(\\s[a-zA-z]{1})?+");
+            .compile("[A-Z]{1}(\\s\\d+)*(\\s[a-zA-z]{1})?+");
 
     private static final MainApplication app = new MainApplication();
+    private boolean isCanvasCreated = false;
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception{
         printHelp();
         app.inputCommand();
     }
 
     //This method takes in the input in an infinite loop until the Q command to exit the program is input
-    protected void inputCommand(){
-        Scanner scanner = new Scanner(System.in);
-        try{
+    private void inputCommand(){
+        try(Scanner scanner = new Scanner(System.in)){
             while (true) {
                 System.out.print("Enter command: ");
                 app.executeCommand(scanner.nextLine());
@@ -36,23 +36,36 @@ public class MainApplication {
     }
 
     // This method executes the functionalities using switch cases and then calling the corresponding classes' object
-    private void executeCommand(final String input) throws Exception {
+    public void executeCommand(final String input) throws Exception {
         validateCommand(input);
         switch (input.charAt(0)) {
             case 'C': {
                 new CreateCanvas(input);
+                isCanvasCreated = true;
                 app.inputCommand();
             }
             case 'L': {
-                new CreateLine(input);
+                if(isCanvasCreated) {
+                    new CreateLine(input);
+                }else{
+                    System.out.println("Canvas not available!");
+                }
                 app.inputCommand();
             }
             case 'R': {
-                new CreateRectangle(input);
+                if(isCanvasCreated) {
+                    new CreateRectangle(input);
+                }else{
+                    System.out.println("Canvas not available!");
+                }
                 app.inputCommand();
             }
             case 'B': {
-                new FillCanvas(input);
+                if(isCanvasCreated) {
+                    new FillCanvas(input);
+                }else{
+                    System.out.println("Canvas not available!");
+                }
                 app.inputCommand();
             }
             case 'Q':
@@ -72,7 +85,7 @@ public class MainApplication {
     }
 
     // this method is printed at the start of every program
-    private static void printHelp() { // great
+    private static void printHelp() {
         String help = "The work as follows:\n"
                 + "1. Create a new canvas \n"
                 + "2. Draw on the canvas by issuing various commands \n"

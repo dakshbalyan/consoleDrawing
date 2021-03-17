@@ -36,10 +36,16 @@ public class CreateRectangle extends Command{
     }
 
     // Specifying between which points the draw function in Command class should be called for
-    private void createRectangle(int x1, int y1, int x2, int y2) {
+    private void createRectangle(int x1, int y1, int x2, int y2) throws Exception {
+//        x --> columns ; y --> rows
+
+//        Drawing upper side
         draw(x1, y1, x2, y1, 'x');
+//        Drawing left side
         draw(x1, y1, x1, y2, 'x');
+//        Drawing right side
         draw(x2, y1, x2, y2, 'x');
+//        Drawing bottom side
         draw(x1, y2, x2, y2, 'x');
     }
 }

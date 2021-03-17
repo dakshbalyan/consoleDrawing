@@ -34,7 +34,7 @@ public class CreateCanvas extends Command{
     }
 
     // Specifying between which points the draw function in Command class should be called for
-    private void drawCanvas() {
+    private void drawCanvas() throws Exception {
         // The +2 part is because I am assuming the parameters given in the 'C w h' command
         // is the drawing area and the extra 2 spaces are for drawing the borders
         shape = new char[height+2][width+2];
